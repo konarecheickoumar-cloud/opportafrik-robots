@@ -25,6 +25,7 @@ async function rpc(name, body = {}) {
 
 // Métier -> description de l'image (en anglais pour le générateur).
 const METIERS = [
+  [/secr[ée]tair|assistant|administra|accueil|r[ée]ception/i, "a smiling African administrative assistant at a reception desk with a computer"],
   [/chauffeur|conducteur|driver/i, "a smiling African man in a white shirt driving a car, hands on the steering wheel"],
   [/comptab|financ|audit|tr[ée]sor|recouvrement|caisse|caissier/i, "a confident African woman accountant working with a calculator and documents at a modern office desk"],
   [/cyber|soc\b|s[ée]curit[ée] informatique/i, "a focused African cybersecurity analyst in front of several monitors in a security operations center"],
@@ -36,7 +37,6 @@ const METIERS = [
   [/ing[ée]nieur|technicien|[ée]lectric|m[ée]cani|maintenance|btp|g[ée]nie|chantier/i, "an African engineer wearing a safety helmet and vest on a construction site"],
   [/agro|agri|[ée]levage|v[ée]t[ée]rin|environnement/i, "an African agronomist in a green field holding a tablet"],
   [/logisti|magasin|stock|transit|approvision|achat/i, "an African logistics officer checking boxes in a warehouse with a tablet"],
-  [/secr[ée]tair|assistant|administra|accueil|r[ée]ception/i, "a smiling African administrative assistant at a reception desk with a computer"],
   [/rh\b|ressources humaines|recrut/i, "an African HR officer interviewing a candidate in a bright office"],
   [/juri|avocat|droit|notaire/i, "an African lawyer reading legal documents in an office"],
   [/s[ée]curit|gardien|vigile/i, "a professional African security guard in uniform at the entrance of a building"],
