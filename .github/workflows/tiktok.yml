@@ -2,7 +2,8 @@ name: Vidéo TikTok du jour
 
 # Lancé chaque matin à 9 h par le réveil GitHub ci-dessous (dépôt public,
 # depuis le 27/11/2026), ou à la main (bouton « Run workflow »).
-# Fabrique une vidéo de moins de 30 s avec les vraies offres du pays du jour,
+# Fabrique la vidéo « avec images » (3 vraies offres du pays du jour, niveaux
+# mélangés, une image par métier ; MODELE=styles pour les 4 anciens styles),
 # puis l'envoie en BROUILLON dans l'appli TikTok du compte branché.
 # Elle part aussi en Short YouTube et en Reel Facebook + Instagram.
 on:

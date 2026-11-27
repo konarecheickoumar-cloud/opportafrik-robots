@@ -1,7 +1,7 @@
-// Vidéo « avec images » (essai) : récupère les vraies offres du jour, le logo
+// Vidéo du jour « avec images » : récupère les vraies offres du jour, le logo
 // du recruteur et une image d'illustration du métier (générée, gratuite, sans
 // compte, par image.pollinations.ai ; secours : photo libre Openverse).
-//   node src/images-donnees.mjs <dossier_sortie>      (PAYS=ML par défaut)
+//   node src/images-donnees.mjs <dossier_sortie>      (PAYS facultatif, sinon pays du jour)
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -79,8 +79,9 @@ async function image(o, i) {
 // 1 poste « moyen » très demandé (assistant, comptable, chauffeur, commercial,
 // technicien…), 1 poste confirmé (responsable, chargé, ingénieur…) et
 // au plus 1 stage. Jamais 3 débutants ou 3 stagiaires.
-const pays = process.env.PAYS || "ML";
-const data = await rpc("tiktok_video_data", { p_zone: pays }); // pays + total
+// Pays : PAYS si donné, sinon le « pays du jour » (rotation de la base).
+const data = await rpc("tiktok_video_data", { p_zone: process.env.PAYS || null }); // pays + total
+const pays = data.pays.code;
 const depuis = new Date(Date.now() - 10 * 864e5).toISOString(), limite2j = new Date(Date.now() + 2 * 864e5).toISOString();
 const q = new URLSearchParams({
   select: "id,title,organization_name,city,category,contract_type,deadline_at,slug,created_at",

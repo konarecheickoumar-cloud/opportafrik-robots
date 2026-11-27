@@ -749,6 +749,14 @@ async function main() {
   const iStatut = process.argv.indexOf("--statut");
   if (iStatut > 0) return statutSeul(process.argv[iStatut + 1]);
   rmSync(OUT, { recursive: true, force: true }); mkdirSync(OUT, { recursive: true });
+  // Modèle « avec images » (choisi par le propriétaire le 27/11/2026) : une
+  // image du métier par offre, niveaux mélangés, sous-titres mot à mot.
+  // MODELE=styles pour revenir aux 4 anciens styles ; en cas de panne du
+  // modèle images, on retombe automatiquement sur les anciens styles.
+  if (!EXEMPLE && process.env.MODELE !== "styles") {
+    try { return await modeleImages(); }
+    catch (e) { console.log(`Modèle avec images en panne (${e.message ?? e}) : anciens styles.`); rmSync(OUT, { recursive: true, force: true }); mkdirSync(OUT, { recursive: true }); }
+  }
   const data = EXEMPLE ? exemple() : await rpc("tiktok_video_data", { p_zone: process.env.PAYS || null });
   const zone = data.pays.code;
   data.offres = (data.offres ?? []).map((o) => ({ ...o, organisation: orgNet(o.organisation), title: titreNet(o.title, o.organisation) }));
@@ -774,8 +782,31 @@ async function main() {
   writeFileSync(join(OUT, "legende.txt"), caption);
   console.log(`Vidéo prête : ${fichier} (${total.toFixed(1)} s, ${(statSync(fichier).size / 1e6).toFixed(1)} Mo)\n\n${caption}`);
 
-  const ids = data.offres.map((o) => o.id).filter(Boolean);
   if (EXEMPLE) return;
+  return envoyer(data, fichier, caption);
+}
+
+async function modeleImages() {
+  const dir = join(OUT, "donnees");
+  execFileSync("node", [join(ROOT, "src", "images-donnees.mjs"), dir], { stdio: "inherit" });
+  const data = JSON.parse(readFileSync(join(dir, "offres.json"), "utf8"));
+  if (!data.offres?.length) {
+    console.log(`Aucune nouvelle offre pour ${data.pays.nom} : pas de vidéo aujourd'hui.`);
+    await rpc("tiktok_log", { p_zone: data.pays.code, p_ids: [], p_status: "rien", p_publish_id: null, p_caption: null, p_detail: `Aucune nouvelle offre (${data.pays.nom})` });
+    return;
+  }
+  const fichier = join(OUT, `opportafrik-${data.pays.slug}-${new Date().toISOString().slice(0, 10)}.mp4`);
+  execFileSync("node", [join(ROOT, "src", "video-images.mjs"), dir, process.env.VOIX || join(ROOT, "voix"), fichier], { stdio: "inherit" });
+  const caption = readFileSync(fichier.replace(/\.mp4$/, "-legende.txt"), "utf8");
+  writeFileSync(join(OUT, "legende.txt"), caption);
+  console.log(`Vidéo prête (modèle avec images) : ${fichier} (${(statSync(fichier).size / 1e6).toFixed(1)} Mo)`);
+  data.offres = data.offres.map((o) => ({ ...o, organisation: orgNet(o.organisation), title: titreNet(o.title, o.organisation) }));
+  return envoyer(data, fichier, caption);
+}
+
+async function envoyer(data, fichier, caption) {
+  const zone = data.pays.code;
+  const ids = data.offres.map((o) => o.id).filter(Boolean);
   let video = null;
   try { video = await ranger(fichier); console.log(`Vidéo à télécharger : ${video}`); }
   catch (e) { console.log(String(e.message ?? e)); }
