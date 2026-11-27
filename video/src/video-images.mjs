@@ -44,7 +44,7 @@ function orgNet(org) {
     .split(" ").map((m) => SIGLES.has(m.toUpperCase()) ? m.toUpperCase() : m).join(" ");
 }
 function titreNet(title, org) {
-  let t = String(title || "").replace(/\s+/g, " ").trim();
+  let t = String(title || "").replace(/\s*\((?:e|es|s|ne|le)\)/gi, "").replace(/^(?:un|une|des)\s+(?=\p{L})/iu, "").replace(/\s+/g, " ").trim();
   const enMaj = majuscules(t);
   t = t.replace(/^.{0,80}?\brecrut(?:e|ent)\b\s*(?::|-|–)?\s*(?:(?:un|une|des|plusieurs)\b\s*)?/i, (m) => /^(plusieurs)/i.test(m.split(/recrut(?:e|ent)/i)[1]?.trim() || "") ? "Plusieurs " : "");
   t = t.replace(/\s*\(?\b(?:h\s*\/\s*f|f\s*\/\s*h|m\s*\/\s*f)\b\)?/gi, "").replace(/\s+/g, " ").trim();
