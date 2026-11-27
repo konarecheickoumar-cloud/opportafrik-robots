@@ -75,18 +75,46 @@ async function image(o, i) {
   return null;
 }
 
+// Choix des offres : un MÉLANGE de niveaux (demande du propriétaire, 27/11) :
+// 1 poste « moyen » très demandé (assistant, comptable, chauffeur, commercial,
+// technicien…), 1 poste confirmé (responsable, chargé, ingénieur…) et
+// au plus 1 stage. Jamais 3 débutants ou 3 stagiaires.
 const pays = process.env.PAYS || "ML";
-const data = await rpc("tiktok_video_data", { p_zone: pays });
-console.log(`${data.pays.nom} : ${data.total} offres ouvertes, ${data.offres.length} choisies`);
+const data = await rpc("tiktok_video_data", { p_zone: pays }); // pays + total
+const depuis = new Date(Date.now() - 10 * 864e5).toISOString(), limite2j = new Date(Date.now() + 2 * 864e5).toISOString();
+const q = new URLSearchParams({
+  select: "id,title,organization_name,city,category,contract_type,deadline_at,slug,created_at",
+  country_code: `eq.${pays}`, status: "eq.publiee", category: "in.(emploi,stage,concours)",
+  created_at: `gt.${depuis}`, or: `(deadline_at.is.null,deadline_at.gte.${limite2j})`, order: "created_at.desc", limit: "300",
+});
+const cands = await (await fetch(`${supabaseUrl()}/rest/v1/opportunities?${q}`, { headers: H })).json();
+const dejaR = await fetch(`${supabaseUrl()}/rest/v1/broadcasts?channel=eq.tiktok&select=opportunity_id&limit=5000`, { headers: H });
+const deja = new Set(dejaR.ok ? (await dejaR.json()).map((x) => x.opportunity_id) : []);
+const sans = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const niveau = (o) => {
+  const t = sans(o.title);
+  if (o.category === "stage" || /stagiaire|\bstage\b|junior|debutant|apprenti/.test(t)) return "debutant";
+  if (/directeur|directrice|\bdg\b|head of|chef de (projet|mission|service|departement)|senior/.test(t)) return "haut";
+  if (/responsable|charge|chargee|ingenieur|coordinat|superviseu|specialiste|gestionnaire|analyste|controleur|auditeur|manager|officer|chef /.test(t)) return "confirme";
+  if (/assistant|secretaire|comptable|chauffeur|commercia|agent|caissier|caissiere|technicien|vendeu|receptionniste|magasinier|infirmier|enseignant|animat|operat|electricien|conseill|livreur|cuisinier|serveu|hotesse|infographiste|community/.test(t)) return "moyen";
+  return o.category === "concours" ? "moyen" : "confirme";
+};
+const note = (o) => (o.deadline_at ? 2 : 0) + (o.city ? 1 : 0) + (o.organization_name ? 2 : 0);
+const pool = cands.filter((o) => !deja.has(o.id) && o.title.length <= 90).map((o, k) => ({ o, k, n: niveau(o) }))
+  .sort((a, b) => note(b.o) - note(a.o) || a.k - b.k);
+const choix = [];
+const prendre = (n) => { const c = pool.find((x) => x.n === n && !choix.includes(x) && !choix.some((y) => y.o.organization_name && y.o.organization_name === x.o.organization_name)); if (c) choix.push(c); };
+prendre("moyen"); prendre("confirme"); prendre("debutant");
+for (const n of ["moyen", "confirme", "haut"]) if (choix.length < 3) prendre(n);
+console.log("Niveaux choisis : " + choix.map((c) => c.n).join(", "));
+data.offres = choix.map(({ o }) => ({ id: o.id, title: o.title, organisation: o.organization_name?.trim() || null, ville: o.city, categorie: o.category, contrat: o.contract_type, limite: o.deadline_at, slug: o.slug, niveau: niveau(o) }));
+console.log(`${data.pays.nom} : ${data.total} offres ouvertes, ${cands.length} récentes, ${data.offres.length} choisies`);
 const ids = data.offres.map((o) => o.id).join(",");
 let extra = [];
 if (ids) {
   const r = await fetch(`${supabaseUrl()}/rest/v1/opportunities?id=in.(${ids})&select=id,summary,organization:organizations(name,logo_url)`, { headers: H });
   extra = r.ok ? await r.json() : [];
 }
-// Les offres les plus complètes d'abord (date limite, ville, employeur), 3 maximum.
-const note = (o) => (o.limite ? 2 : 0) + (o.ville ? 1 : 0) + (o.organisation ? 1 : 0);
-data.offres = data.offres.map((o, k) => [o, k]).sort((a, b) => note(b[0]) - note(a[0]) || a[1] - b[1]).map(([o]) => o).slice(0, 3);
 for (const [i, o] of data.offres.entries()) {
   const e = extra.find((x) => x.id === o.id);
   o.resume = e?.summary?.slice(0, 400) ?? null;
