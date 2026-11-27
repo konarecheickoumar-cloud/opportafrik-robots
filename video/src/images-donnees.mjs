@@ -27,8 +27,9 @@ async function rpc(name, body = {}) {
 const METIERS = [
   [/chauffeur|conducteur|driver/i, "a smiling young African man in a white shirt driving a car, hands on the steering wheel"],
   [/comptab|financ|audit|tr[ée]sor|recouvrement|caisse|caissier/i, "a confident young African woman accountant working with a calculator and documents at a modern office desk"],
+  [/cyber|soc\b|s[ée]curit[ée] informatique/i, "a focused young African cybersecurity analyst in front of several monitors in a security operations center"],
   [/d[ée]velopp|informati|r[ée]seau|syst[eè]me|digital|web|data|tic\b|it\b/i, "a young African software developer working on code on a computer screen in a modern office"],
-  [/commerc|vente|vendeu|marketing|client/i, "a smiling young African saleswoman talking with a customer in a shop"],
+  [/commerc|vente|vendeu|marketing|client|business/i, "a smiling young African saleswoman talking with a customer in a shop"],
   [/communic|community|journal|m[ée]dia/i, "a young African communication officer working on social media on a laptop and smartphone"],
   [/m[ée]dec|infirm|sant[ée]|pharma|sage|m[ée]dical|nutrition/i, "a young African nurse in a hospital, smiling, wearing scrubs"],
   [/enseign|professeur|formateur|[ée]ducat|instituteur/i, "a young African teacher in front of a classroom blackboard"],
@@ -59,22 +60,18 @@ async function telecharger(url, fichier, min = 8000) {
   return false;
 }
 
+// Pas de photo « au hasard » d'Internet (personnes réelles, droits) : seulement
+// des images générées. Limite gratuite : une image à la fois, pause entre deux.
 async function image(o, i) {
   const desc = decrire(o);
   const prompt = `${desc}, West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark`;
   const fichier = join(OUT, `photo-${i}.jpg`);
-  const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=720&nologo=true&seed=${27 + i}&model=flux`;
   console.log(`Image ${i} : ${desc}`);
-  if (await telecharger(url, fichier)) return { fichier: `photo-${i}.jpg`, source: "pollinations", prompt };
-  // Secours : photo libre (usage commercial autorisé) sur Openverse.
-  try {
-    const q = desc.split(" ").slice(2, 6).join(" ");
-    const r = await fetch(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license_type=commercial&page_size=5`);
-    const j = await r.json();
-    for (const it of j.results ?? []) {
-      if (await telecharger(it.url, fichier)) return { fichier: `photo-${i}.jpg`, source: "openverse", credit: `${it.creator ?? ""} (${it.license} ${it.license_version ?? ""})`, lien: it.foreign_landing_url };
-    }
-  } catch (e) { console.log("  openverse : " + e.message); }
+  for (let essai = 0; essai < 4; essai++) {
+    const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=800&nologo=true&seed=${27 + i + essai * 100}&model=flux&referrer=opportafrik`;
+    if (await telecharger(url, fichier)) { await new Promise((r) => setTimeout(r, 20_000)); return { fichier: `photo-${i}.jpg`, source: "pollinations", prompt }; }
+    await new Promise((r) => setTimeout(r, 30_000));
+  }
   return null;
 }
 
@@ -87,6 +84,9 @@ if (ids) {
   const r = await fetch(`${supabaseUrl()}/rest/v1/opportunities?id=in.(${ids})&select=id,summary,organization:organizations(name,logo_url)`, { headers: H });
   extra = r.ok ? await r.json() : [];
 }
+// Les offres les plus complètes d'abord (date limite, ville, employeur), 3 maximum.
+const note = (o) => (o.limite ? 2 : 0) + (o.ville ? 1 : 0) + (o.organisation ? 1 : 0);
+data.offres = data.offres.map((o, k) => [o, k]).sort((a, b) => note(b[0]) - note(a[0]) || a[1] - b[1]).map(([o]) => o).slice(0, 3);
 for (const [i, o] of data.offres.entries()) {
   const e = extra.find((x) => x.id === o.id);
   o.resume = e?.summary?.slice(0, 400) ?? null;
