@@ -1,0 +1,64 @@
+{
+  "pays": {
+    "nom": "Mali",
+    "code": "ML",
+    "slug": "mali"
+  },
+  "total": 381,
+  "offres": [
+    {
+      "id": "6be4dff8-71ee-470c-907b-f76a6a5158ce",
+      "title": "Un (E) secrétaire médical(E)",
+      "organisation": "CABINET GERSEL",
+      "ville": "Bamako",
+      "categorie": "emploi",
+      "contrat": "cdi",
+      "limite": "2026-12-02T23:59:00+00:00",
+      "slug": "un-e-secretaire-medical-e-bamako-cabinet-gersel-aa043d",
+      "niveau": "moyen",
+      "resume": "CABINET GERSEL recrute pour le poste « Un (E) secrétaire médical(E) » à Bamako. Il s'agit d'un contrat à durée indéterminée (CDI). Les candidatures sont ouvertes jusqu'au 2 décembre 2026.",
+      "logo": null,
+      "photo": {
+        "fichier": "photo-0.jpg",
+        "source": "pollinations",
+        "prompt": "an African nurse in a hospital, smiling, wearing scrubs, one adult man aged 30, facing the camera, smiling, wearing professional clothes, West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark"
+      }
+    },
+    {
+      "id": "87d91fa1-b581-4299-a060-a555abbf9347",
+      "title": "GIZ Mali recrute auditeur interne (H/F)",
+      "organisation": "GIZ MALI",
+      "ville": "Bamako",
+      "categorie": "emploi",
+      "contrat": "cdd",
+      "limite": "2026-12-11T23:59:00+00:00",
+      "slug": "giz-mali-recrute-auditeur-interne-h-f-bamako-giz-mali-ebd7fc",
+      "niveau": "confirme",
+      "resume": "GIZ MALI recrute pour le poste « Auditeur interne (H/F) » à Bamako. Il s'agit d'un contrat à durée déterminée (CDD). Les candidatures sont ouvertes jusqu'au 11 décembre 2026.",
+      "logo": null,
+      "photo": {
+        "fichier": "photo-1.jpg",
+        "source": "pollinations",
+        "prompt": "a confident African woman accountant working with a calculator and documents at a modern office desk, one adult woman aged 30, facing the camera, smiling, wearing professional clothes, West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark"
+      }
+    },
+    {
+      "id": "5442c222-2073-4cd0-972c-7703d09f23a2",
+      "title": "HI Events recrute stagiaire community manager (H/F)",
+      "organisation": "HI EVENTS",
+      "ville": "Bamako",
+      "categorie": "stage",
+      "contrat": "stage",
+      "limite": "2026-12-05T23:59:00+00:00",
+      "slug": "hi-events-recrute-stagiaire-community-manager-h-f-bamako-hi-events-314a50",
+      "niveau": "debutant",
+      "resume": "HI EVENTS recrute pour le poste « Stagiaire community manager (H/F) » à Bamako. Il s'agit d'un stage. Les candidatures sont ouvertes jusqu'au 5 décembre 2026.",
+      "logo": null,
+      "photo": {
+        "fichier": "photo-2.jpg",
+        "source": "pollinations",
+        "prompt": "an African communication officer working on social media on a laptop and smartphone, one adult man aged 30, facing the camera, smiling, wearing professional clothes, West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark"
+      }
+    }
+  ]
+}
