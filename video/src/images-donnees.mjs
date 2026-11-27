@@ -25,27 +25,27 @@ async function rpc(name, body = {}) {
 
 // Métier -> description de l'image (en anglais pour le générateur).
 const METIERS = [
-  [/chauffeur|conducteur|driver/i, "a smiling young African man in a white shirt driving a car, hands on the steering wheel"],
-  [/comptab|financ|audit|tr[ée]sor|recouvrement|caisse|caissier/i, "a confident young African woman accountant working with a calculator and documents at a modern office desk"],
-  [/cyber|soc\b|s[ée]curit[ée] informatique/i, "a focused young African cybersecurity analyst in front of several monitors in a security operations center"],
-  [/d[ée]velopp|informati|r[ée]seau|syst[eè]me|digital|web|data|tic\b|it\b/i, "a young African software developer working on code on a computer screen in a modern office"],
-  [/commerc|vente|vendeu|marketing|client|business/i, "a smiling young African saleswoman talking with a customer in a shop"],
-  [/communic|community|journal|m[ée]dia/i, "a young African communication officer working on social media on a laptop and smartphone"],
-  [/m[ée]dec|infirm|sant[ée]|pharma|sage|m[ée]dical|nutrition/i, "a young African nurse in a hospital, smiling, wearing scrubs"],
-  [/enseign|professeur|formateur|[ée]ducat|instituteur/i, "a young African teacher in front of a classroom blackboard"],
-  [/ing[ée]nieur|technicien|[ée]lectric|m[ée]cani|maintenance|btp|g[ée]nie|chantier/i, "a young African engineer wearing a safety helmet and vest on a construction site"],
-  [/agro|agri|[ée]levage|v[ée]t[ée]rin|environnement/i, "a young African agronomist in a green field holding a tablet"],
-  [/logisti|magasin|stock|transit|approvision|achat/i, "a young African logistics officer checking boxes in a warehouse with a tablet"],
-  [/secr[ée]tair|assistant|administra|accueil|r[ée]ception/i, "a smiling young African administrative assistant at a reception desk with a computer"],
-  [/rh\b|ressources humaines|recrut/i, "a young African HR officer interviewing a candidate in a bright office"],
-  [/juri|avocat|droit|notaire/i, "a young African lawyer reading legal documents in an office"],
+  [/chauffeur|conducteur|driver/i, "a smiling African man in a white shirt driving a car, hands on the steering wheel"],
+  [/comptab|financ|audit|tr[ée]sor|recouvrement|caisse|caissier/i, "a confident African woman accountant working with a calculator and documents at a modern office desk"],
+  [/cyber|soc\b|s[ée]curit[ée] informatique/i, "a focused African cybersecurity analyst in front of several monitors in a security operations center"],
+  [/d[ée]velopp|informati|r[ée]seau|syst[eè]me|digital|web|data|tic\b|it\b/i, "an African software developer working on code on a computer screen in a modern office"],
+  [/commerc|vente|vendeu|marketing|client|business/i, "a smiling African saleswoman talking with a customer in a shop"],
+  [/communic|community|journal|m[ée]dia/i, "an African communication officer working on social media on a laptop and smartphone"],
+  [/m[ée]dec|infirm|sant[ée]|pharma|sage|m[ée]dical|nutrition/i, "an African nurse in a hospital, smiling, wearing scrubs"],
+  [/enseign|professeur|formateur|[ée]ducat|instituteur/i, "an African teacher in front of a classroom blackboard"],
+  [/ing[ée]nieur|technicien|[ée]lectric|m[ée]cani|maintenance|btp|g[ée]nie|chantier/i, "an African engineer wearing a safety helmet and vest on a construction site"],
+  [/agro|agri|[ée]levage|v[ée]t[ée]rin|environnement/i, "an African agronomist in a green field holding a tablet"],
+  [/logisti|magasin|stock|transit|approvision|achat/i, "an African logistics officer checking boxes in a warehouse with a tablet"],
+  [/secr[ée]tair|assistant|administra|accueil|r[ée]ception/i, "a smiling African administrative assistant at a reception desk with a computer"],
+  [/rh\b|ressources humaines|recrut/i, "an African HR officer interviewing a candidate in a bright office"],
+  [/juri|avocat|droit|notaire/i, "an African lawyer reading legal documents in an office"],
   [/s[ée]curit|gardien|vigile/i, "a professional African security guard in uniform at the entrance of a building"],
-  [/h[ôo]tel|cuisin|restaura|serveu/i, "a young African chef in a professional kitchen"],
-  [/concours|fonction publique|minist/i, "young African candidates writing an exam in a large exam hall"],
-  [/bourse|universit|master|doctorat|[ée]tudiant/i, "a smiling young African student with books on a university campus"],
-  [/projet|coordinat|suivi|[ée]valuation|ong|humanitaire|programme/i, "a young African project officer in a meeting with a team, notebook and laptop"],
+  [/h[ôo]tel|cuisin|restaura|serveu/i, "an African chef in a professional kitchen"],
+  [/concours|fonction publique|minist/i, "adult African candidates writing an exam in a large exam hall"],
+  [/bourse|universit|master|doctorat|[ée]tudiant/i, "a smiling African student with books on a university campus"],
+  [/projet|coordinat|suivi|[ée]valuation|ong|humanitaire|programme/i, "an African project officer in a meeting with a team, notebook and laptop"],
 ];
-const decrire = (o) => (METIERS.find(([re]) => re.test(`${o.title} ${o.categorie}`))?.[1]) ?? "a confident young African professional in a modern office in Bamako";
+const decrire = (o) => (METIERS.find(([re]) => re.test(`${o.title} ${o.categorie}`))?.[1]) ?? "a confident African professional in a modern office in Bamako";
 
 async function telecharger(url, fichier, min = 8000) {
   for (let i = 0; i < 3; i++) {
@@ -64,7 +64,7 @@ async function telecharger(url, fichier, min = 8000) {
 // des images générées. Limite gratuite : une image à la fois, pause entre deux.
 async function image(o, i) {
   const desc = decrire(o);
-  const prompt = `${desc}, the person is an adult ${i % 2 ? "woman" : "man"} about 28 years old (not a child), West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark`;
+  const prompt = `${desc}, one adult ${i % 2 ? "woman" : "man"} aged 30, facing the camera, smiling, wearing professional clothes, West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark`;
   const fichier = join(OUT, `photo-${i}.jpg`);
   console.log(`Image ${i} : ${desc}`);
   for (let essai = 0; essai < 4; essai++) {
