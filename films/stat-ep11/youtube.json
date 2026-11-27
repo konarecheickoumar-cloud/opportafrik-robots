@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "ANOVA, test t apparié et corrélation de Pearson | Cours de statistique, épisode 11/13",
+  "description": "Épisode 11 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 10, Comparer des moyennes : test t, ANOVA et tests non paramétriques (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/comparer-moyennes?src=yt\n📖 Leçon 11, Corrélation et régression : mesurer et expliquer des liens (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/correlation-regression?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 10 : Comparer des moyennes : test t, ANOVA et tests non paramétriques (suite)\n1:27 L'ANOVA à un facteur : le principe\n2:04 L'ANOVA : exemple pas à pas\n4:28 Vérifier les conditions\n5:13 Le piège causal\n5:33 Exercice pratique\n6:25 Corrigé\n7:24 Quiz\n9:52 Fin de la leçon 10\n10:04 Leçon 11 : Corrélation et régression : mesurer et expliquer des liens\n10:23 Le fil rouge\n11:01 La corrélation de Pearson\n12:00 Régression linéaire simple\n12:55 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Test t, ANOVA et tests non paramétriques",
+    "Corrélation et régression linéaire et logistique",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 10,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}

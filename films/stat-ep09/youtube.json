@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "Tests d'hypothèses, valeur p et khi-deux | Cours de statistique, épisode 9/13",
+  "description": "Épisode 9 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 8, De l'échantillon à la population : intervalles de confiance (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/probabilites-intervalles-confiance?src=yt\n📖 Leçon 9, Tests d'hypothèses et test du khi-deux (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/tests-hypotheses-khi-deux?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 8 : De l'échantillon à la population : intervalles de confiance (suite)\n1:54 Exercice complet\n2:50 Corrigé\n4:40 Quiz\n7:27 Fin de la leçon 8\n7:41 Leçon 9 : Tests d'hypothèses et test du khi-deux\n7:59 Le fil rouge\n8:28 La logique d'un test : l'analogie du tribunal\n9:29 La règle de décision et la valeur p\n10:28 Les deux types d'erreurs\n11:25 Le test du khi-deux d'indépendance\n12:38 Exemple complet : 200 diplômés\n14:05 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Intervalles de confiance",
+    "Tests d'hypothèses et khi-deux",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 8,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}

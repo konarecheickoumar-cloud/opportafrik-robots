@@ -1,0 +1,37 @@
+name: Film Opportafrik Stories sur YouTube
+
+# Lancé à la main (ou par Claude) : envoie un film déjà monté, rangé dans
+# films/<dossier>/ (video.mp4 + youtube.json), sur la chaîne YouTube branchée.
+on:
+  workflow_dispatch:
+    inputs:
+      dossier:
+        description: "Dossier du film, ex. films/25-aicha"
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: film
+  cancel-in-progress: false
+
+jobs:
+  film:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Envoyer le film sur YouTube
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          DOSSIER: ${{ inputs.dossier }}
+        run: |
+          if [ "$DOSSIER" = "stats" ]; then node video/src/stats-formations.mjs; exit 0; fi
+          case "$DOSSIER" in films/*) ;; *) echo "Le dossier doit commencer par films/"; exit 1;; esac
+          node video/src/film.mjs "$DOSSIER"

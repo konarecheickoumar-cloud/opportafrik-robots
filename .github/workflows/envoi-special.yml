@@ -1,0 +1,41 @@
+name: Envoi exceptionnel d'une vidéo
+
+# Lancé à la main (ou par Claude) : envoie tout de suite une vidéo déjà montée,
+# rangée dans films/<dossier>/ (video.mp4 + envoi.json), sur YouTube, en Reel
+# Facebook + Instagram, et la range dans /admin « Vidéo TikTok du jour ».
+on:
+  workflow_dispatch:
+    inputs:
+      dossier:
+        description: "Dossier de la vidéo, ex. films/27-formations"
+        required: true
+      canaux:
+        description: "Facultatif : youtube,facebook,instagram,tiktok (vide = tous)"
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: envoi-special
+  cancel-in-progress: false
+
+jobs:
+  envoi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Envoyer la vidéo
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          DOSSIER: ${{ inputs.dossier }}
+          CANAUX: ${{ inputs.canaux }}
+        run: |
+          case "$DOSSIER" in films/*) ;; *) echo "Le dossier doit commencer par films/"; exit 1;; esac
+          node video/src/envoi-special.mjs "$DOSSIER" "$CANAUX"

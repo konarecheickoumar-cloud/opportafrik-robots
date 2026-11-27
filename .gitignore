@@ -1,3 +1,6 @@
 node_modules/
 .env
 *.log
+video/node_modules/
+video/sortie/
+video/voix/

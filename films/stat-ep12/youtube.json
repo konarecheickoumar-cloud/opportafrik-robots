@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "Régression linéaire, multiple et logistique | Cours de statistique, épisode 12/13",
+  "description": "Épisode 12 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 11, Corrélation et régression : mesurer et expliquer des liens (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/correlation-regression?src=yt\n📖 Leçon 12, Logiciels, choix des méthodes et rapport d'analyse (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/logiciels-rapport-analyse?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 11 : Corrélation et régression : mesurer et expliquer des liens (suite)\n2:19 Régression multiple : toutes choses égales par ailleurs\n3:42 Les conditions à vérifier\n4:23 La régression logistique\n5:24 Le piège de l'odds ratio\n5:49 Corrélation n'est pas causalité\n6:39 Exercice : lire une régression\n7:42 Corrigé\n8:42 Quiz\n11:22 Fin de la leçon 11\n11:37 Leçon 12 : Logiciels, choix des méthodes et rapport d'analyse\n12:00 Choisir la méthode selon la question\n13:33 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Corrélation et régression linéaire et logistique",
+    "Stata, R, SPSS, Excel et rapport d'analyse",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 11,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}

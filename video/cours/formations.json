@@ -1,0 +1,22 @@
+{
+  "_note": "File d'attente des cours vidéo YouTube (ordre = formations les plus commencées sur le site au 27/11/2026, statistique déjà faite). court = nom dans les titres YouTube.",
+  "file": [
+    { "fichier": "comptabilite.ts", "export": "COMPTABILITE", "court": "Comptabilité SYSCOHADA", "titre": "Formation comptabilité SYSCOHADA",
+      "tags": ["comptabilité", "SYSCOHADA", "SYSCOHADA révisé", "OHADA", "cours de comptabilité", "comptabilité générale", "gestion financière", "formation comptabilité en français", "TVA", "bilan", "compte de résultat"],
+      "hashtags": "#comptabilité #SYSCOHADA #OHADA #gestionfinancière #opportafrik" },
+    { "fichier": "culture-generale.ts", "export": "CULTURE_GENERALE", "court": "Culture générale concours", "titre": "Culture générale pour les concours de la fonction publique",
+      "tags": ["culture générale", "concours fonction publique", "concours Mali", "préparer un concours", "QCM culture générale"], "hashtags": "#culturegénérale #concours #fonctionpublique #opportafrik" },
+    { "fichier": "hse.ts", "export": "HSE", "court": "HSE", "titre": "Formation HSE santé sécurité environnement",
+      "tags": ["HSE", "santé sécurité au travail", "QHSE", "sécurité au travail", "environnement", "prévention des risques"], "hashtags": "#HSE #QHSE #sécuritéautravail #opportafrik" },
+    { "fichier": "logistique.ts", "export": "LOGISTIQUE", "court": "Logistique, achats et stocks", "titre": "Formation logistique, achats et stocks",
+      "tags": ["logistique", "achats", "gestion des stocks", "supply chain", "approvisionnement"], "hashtags": "#logistique #achats #gestiondesstocks #opportafrik" },
+    { "fichier": "bureautique.ts", "export": "BUREAUTIQUE", "court": "Bureautique", "titre": "Formation bureautique et outils numériques",
+      "tags": ["bureautique", "Word", "Excel", "outils numériques", "informatique de base"], "hashtags": "#bureautique #Word #Excel #opportafrik" },
+    { "fichier": "rh-paie.ts", "export": "RH_PAIE", "court": "RH et paie", "titre": "Formation ressources humaines et paie",
+      "tags": ["ressources humaines", "paie", "RH", "gestion du personnel", "droit du travail"], "hashtags": "#RH #paie #ressourceshumaines #opportafrik" },
+    { "fichier": "vente.ts", "export": "VENTE", "court": "Vente et service client", "titre": "Formation vente et service client",
+      "tags": ["vente", "service client", "techniques de vente", "commercial", "relation client"], "hashtags": "#vente #serviceclient #commercial #opportafrik" },
+    { "fichier": "emploi.ts", "export": "EMPLOI", "court": "Décrocher un emploi", "titre": "Formation décrocher un emploi : CV, entretien",
+      "tags": ["CV", "entretien d'embauche", "lettre de motivation", "trouver un emploi", "recherche d'emploi"], "hashtags": "#emploi #CV #entretien #opportafrik" }
+  ]
+}

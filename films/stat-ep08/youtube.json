@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "Loi normale, erreur type et intervalle de confiance | Cours de statistique, épisode 8/13",
+  "description": "Épisode 8 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 7, Tableaux croisés et graphiques qui disent la vérité (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/tableaux-croises-graphiques?src=yt\n📖 Leçon 8, De l'échantillon à la population : intervalles de confiance (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/probabilites-intervalles-confiance?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 7 : Tableaux croisés et graphiques qui disent la vérité (suite)\n0:43 Exercice complet\n1:29 Corrigé\n2:39 Quiz\n5:15 Fin de la leçon 7\n5:29 Leçon 8 : De l'échantillon à la population : intervalles de confiance\n5:51 Le fil rouge\n6:32 La loi normale\n7:39 Le théorème central limite\n8:13 L'erreur type\n8:56 Intervalle de confiance pour une proportion\n10:43 Intervalle de confiance pour une moyenne\n11:40 La loi de Student\n12:32 Que signifie « 95 % de confiance » ?\n13:23 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Tableaux croisés et graphiques",
+    "Intervalles de confiance",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 7,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}

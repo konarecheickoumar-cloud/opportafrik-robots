@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "Nettoyer une base : valeurs manquantes et aberrantes | Cours de statistique, épisode 5/13",
+  "description": "Épisode 5 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 4, Organiser la collecte et contrôler la qualité (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/collecte-qualite-donnees?src=yt\n📖 Leçon 5, Nettoyer et préparer la base de données (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/nettoyer-preparer-donnees?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 4 : Organiser la collecte et contrôler la qualité (suite)\n0:42 Exercice : lire un tableau de contrôle\n1:37 Corrigé\n2:44 Quiz\n5:19 Fin de la leçon 4\n5:47 Le principe directeur\n6:28 La structure d'une base propre\n7:20 Les sept étapes du nettoyage\n9:11 Les valeurs manquantes\n10:19 Repérer une valeur aberrante : la règle des quartiles\n12:04 Atypique ne veut pas dire faux\n12:52 Le journal de nettoyage\n13:49 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Organiser la collecte et contrôler la qualité",
+    "Nettoyer et préparer une base de données",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 4,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}

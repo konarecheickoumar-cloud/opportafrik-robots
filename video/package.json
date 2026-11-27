@@ -1,0 +1,13 @@
+{
+  "name": "video-tiktok",
+  "private": true,
+  "type": "module",
+  "description": "Fabrique la vidéo TikTok du jour (vraies offres) et l'envoie en brouillon dans TikTok.",
+  "scripts": {
+    "video": "node src/video.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@napi-rs/canvas": "1.0.12"
+  }
+}

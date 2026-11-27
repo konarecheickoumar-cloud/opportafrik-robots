@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "Pondérations et questionnaire KoboToolbox (XLSForm) | Cours de statistique, épisode 3/13",
+  "description": "Épisode 3 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 2, Échantillonnage et taille d'échantillon (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/echantillonnage-taille-echantillon?src=yt\n📖 Leçon 3, Concevoir un questionnaire et le programmer dans KoboToolbox (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/questionnaire-kobotoolbox?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 2 : Échantillonnage et taille d'échantillon (suite)\n1:58 Exercice : taille d'échantillon complète\n2:51 Corrigé\n4:15 Quiz\n7:04 Les pièges à retenir\n7:44 Leçon 3 : Concevoir un questionnaire et le programmer dans KoboToolbox\n8:03 L'idée centrale\n8:20 Les règles d'une bonne question\n10:00 Ordre et structure du questionnaire\n10:28 KoboToolbox et le format XLSForm\n12:39 La feuille choices\n12:55 Les colonnes qui font la qualité\n13:53 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Échantillonnage et taille d'échantillon",
+    "Questionnaire et KoboToolbox (XLSForm)",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 2,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}

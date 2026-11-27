@@ -1,0 +1,25 @@
+{
+  "zone": "ML",
+  "title": "Test du khi-deux pas à pas, V de Cramér et test t | Cours de statistique, épisode 10/13",
+  "description": "Épisode 10 sur 13 du cours complet et gratuit « Statistique appliquée et analyse de données : de l'enquête au rapport », en français. Fil rouge du cours : une enquête sur l'insertion des jeunes diplômés à Bamako. Tous les calculs sont faits pas à pas, puis montrés dans Excel, SPSS, Stata et R.\n\n📖 Leçon 9, Tests d'hypothèses et test du khi-deux (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/tests-hypotheses-khi-deux?src=yt\n📖 Leçon 10, Comparer des moyennes : test t, ANOVA et tests non paramétriques (cours écrit, exercice corrigé, quiz) :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees/comparer-moyennes?src=yt\n\n🎓 Examen final (80/100 pour réussir) et certificat avec QR code, vérifiable par les recruteurs :\nhttps://opportafrik.com/formations/statistique-appliquee-analyse-donnees?src=yt\n\n🔔 Abonne-toi à la chaîne et active la cloche pour ne rater aucun épisode. Toute la formation est dans la playlist « Formation Statistique appliquée et analyse de données ».\n\nAu programme de cet épisode :\n0:00 Leçon 9 : Tests d'hypothèses et test du khi-deux (suite)\n1:06 Conditions et variantes\n1:56 Mesurer la force du lien : le V de Cramér\n2:53 Le piège des tests multiples\n3:51 Exercice : khi-deux à la main\n4:35 Corrigé\n6:38 Quiz\n9:20 Fin de la leçon 9\n9:35 Leçon 10 : Comparer des moyennes : test t, ANOVA et tests non paramétriques\n9:56 Choisir le test\n11:03 Le test t pour deux groupes indépendants\n12:47 La taille d'effet : le d de Cohen\n13:32 Examen final et certificat sur opportafrik.com\n\nPour qui ? Étudiants en statistique, économie, sociologie, santé publique, agronomie ; chargés de suivi-évaluation ; agents et superviseurs d'enquête ; mémorants ; cadres d'ONG, de ministères et de bureaux d'études en Afrique.\n\nOpportafrik : offres d'emploi, stages, concours, bourses et formations au Mali et en Afrique de l'Ouest → https://opportafrik.com?src=yt\n\n#statistique #coursdestatistique #analysededonnees #suiviévaluation #opportafrik",
+  "tags": [
+    "cours de statistique",
+    "statistique appliquée",
+    "analyse de données",
+    "formation statistique",
+    "cours statistique en français",
+    "suivi-évaluation",
+    "enquête statistique",
+    "Tests d'hypothèses et khi-deux",
+    "Test t, ANOVA et tests non paramétriques",
+    "Excel",
+    "SPSS",
+    "Stata",
+    "R",
+    "Opportafrik"
+  ],
+  "categoryId": "27",
+  "playlist": "Formation Statistique appliquée et analyse de données",
+  "position": 9,
+  "playlistDescription": "Cours complet de statistique appliquée en vidéo, de l'enquête au rapport : échantillonnage, KoboToolbox, nettoyage, statistiques descriptives, intervalles de confiance, khi-deux, test t, ANOVA, régression. Cours écrit, exercices, examen final et certificat sur https://opportafrik.com/formations/statistique-appliquee-analyse-donnees"
+}
