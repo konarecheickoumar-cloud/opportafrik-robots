@@ -313,9 +313,9 @@ const scenes = [
     const j = jours(o);
     const fin = j && j >= 1 && j <= 10 ? (j === 1 ? " Attention, il ne reste qu'un jour !" : ` Il reste ${j} jours pour postuler.`) : " Postule vite.";
     const lieu = o.ville ? `, à ${o.ville}` : "";
-    const qui = o.organisation ? `${o.organisation} recrute` : "Offre";
+    const qui = o.organisation ? `${o.organisation} recrute` : ["Première offre", "Nouvelle offre", "Dernière offre"][i];
     return { draw: sceneOffre, S: { o, i, n: offres.length, img: photos[i], logo: logos[i], pays: data.pays },
-      dit: `${ordinal[i]}${o.organisation ? propre(o.organisation) + " recrute" : "une offre"} : ${propre(o.titreNet)}${lieu}.${fin}`,
+      dit: `${ordinal[i]}${o.organisation ? propre(o.organisation) + " recrute" : ["Première offre", "nouvelle offre", "dernière offre"][i]} : ${propre(o.titreNet)}${lieu}.${fin}`,
       ecrit: `${qui} : ${o.titreNet}${lieu}.${fin}` };
   }),
   { draw: scenePlus, S: { total: data.total, prep },
@@ -379,6 +379,6 @@ for (let f = 0; f < N; f++) {
 }
 ff.stdin.end();
 await new Promise((r) => ff.on("close", r));
-const legende = `📍 ${ville} : ${offres.length} offres qui viennent de tomber 👇\n${offres.map((o) => `• ${o.titreNet}${o.organisation ? ` (${o.organisation})` : ""}`).join("\n")}\n\n+${data.total} offres ouvertes ${prep}, gratuites, sur opportafrik.com (lien dans la bio). Envoie à un ami qui cherche 📲\n\n#emploi${data.pays.slug?.replace(/-/g, "") ?? ""} #${data.pays.slug?.replace(/-/g, "") ?? "afrique"}tiktok #recrutement #${ville.toLowerCase().replace(/[^a-z]/g, "")} #opportafrik`;
+const legende = `📍 ${ville} : ${offres.length} offres qui viennent de tomber 👇\n${offres.map((o) => `• ${o.titreNet}${o.organisation ? ` (${o.organisation})` : ""}`).join("\n")}\n\n+${data.total} offres ouvertes ${prep}, gratuites, sur opportafrik.com (lien dans la bio). Envoie à un ami qui cherche 📲\n\n#emploi${data.pays.slug?.replace(/-/g, "") ?? ""} #${data.pays.slug?.replace(/-/g, "") ?? "afrique"}tiktok #recrutement${ville !== data.pays.nom ? ` #${ville.toLowerCase().normalize("NFD").replace(/[^a-z]/g, "")}` : ""} #opportafrik`;
 writeFileSync(SORTIE.replace(/\.mp4$/, "-legende.txt"), legende);
 console.log(`\nVidéo prête : ${SORTIE}\n\n${legende}`);
