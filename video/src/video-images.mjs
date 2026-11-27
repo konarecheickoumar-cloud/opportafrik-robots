@@ -76,6 +76,8 @@ function texteCentre(ctx, t, y, px, col, w = "Black") {
   ctx.font = font(w, px); ctx.textAlign = "center"; const tw = ctx.measureText(t).width;
   ctx.fillStyle = col === "grad" ? grad(ctx, W / 2 - tw / 2, W / 2 + tw / 2) : col; ctx.fillText(t, W / 2, y); ctx.textAlign = "left";
 }
+// Agrandit (s) ce que dessine f autour du point (cx, cy).
+function zoomEn(ctx, cx, cy, s, f) { if (s <= 0) return; ctx.save(); ctx.translate(cx, cy); ctx.scale(s, s); ctx.translate(-cx, -cy); f(); ctx.restore(); }
 // Courbes d'animation
 const clamp = (x) => Math.max(0, Math.min(1, x));
 const easeOut = (x) => 1 - Math.pow(1 - clamp(x), 3);
@@ -111,9 +113,11 @@ function epingle(ctx, x, y, r, col) {
 function photo(ctx, img, x, y, w, h, r, zoom = 1) {
   ctx.save(); rond(ctx, x, y, w, h, r); ctx.clip();
   if (img) {
-    const s = Math.max(w / img.width, h / img.height) * zoom;
-    const iw = img.width * s, ih = img.height * s;
-    ctx.drawImage(img, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih);
+    // le bas de l'image générée (petite marque) est toujours coupé
+    const sw = img.width, sh = Math.round(img.height * 0.92);
+    const s = Math.max(w / sw, h / sh) * zoom;
+    const iw = sw * s, ih = sh * s;
+    ctx.drawImage(img, 0, 0, sw, sh, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih);
   } else { ctx.fillStyle = grad(ctx, x, x + w); ctx.fillRect(x, y, w, h); }
   ctx.restore();
 }
@@ -164,8 +168,8 @@ function sceneAccroche(ctx, t, d, S) {
   ctx.fillStyle = "#FF5FB4"; ctx.textAlign = "left"; ctx.fillText(lab, (W - lw) / 2, 290);
   ctx.globalAlpha = 1;
   const s1 = back((t - 0.1) / 0.5), s2 = back((t - 0.3) / 0.5);
-  ctx.save(); ctx.translate(W / 2, 430); ctx.scale(s1, s1); texteCentre(ctx, "ILS RECRUTENT", 0, 118, "#fff"); ctx.restore();
-  ctx.save(); ctx.translate(W / 2, 560); ctx.scale(s2, s2); texteCentre(ctx, "AUJOURD'HUI", 0, 118, "grad"); ctx.restore();
+  zoomEn(ctx, W / 2, 400, s1, () => texteCentre(ctx, "ILS RECRUTENT", 440, 118, "#fff"));
+  zoomEn(ctx, W / 2, 530, s2, () => texteCentre(ctx, "AUJOURD'HUI", 570, 118, "grad"));
   // 3 photos en éventail
   const pos = [[-300, -0.10], [0, 0], [300, 0.10]];
   photos.slice(0, 3).forEach((img, i) => {
@@ -201,7 +205,7 @@ function sceneOffre(ctx, t, d, S) {
   ctx.restore();
   // carte d'information qui monte
   const ce = back((t - 0.25) / 0.5); if (ce <= 0) return;
-  const org = o.organisation || "Recruteur";
+  const org = o.organisation || "Employeur non indiqué";
   ctx.font = font("Black", 54); const titre = lignes(ctx, o.titreNet, w - 100, 3);
   const cy = 820 + (1 - ce) * 300, ch = 250 + titre.length * 66 + 90;
   ctx.save(); ctx.globalAlpha = clamp(ce);
@@ -253,7 +257,7 @@ function scenePlus(ctx, t, d, S) {
   ctx.globalAlpha = a; texteCentre(ctx, "ET CE N'EST PAS TOUT…", 420, 52, "#FF5FB4"); ctx.globalAlpha = 1;
   const k = Math.round(S.total * easeOut((t - 0.3) / 1.2));
   const s = back((t - 0.3) / 0.5);
-  ctx.save(); ctx.translate(W / 2, 720); ctx.scale(s, s); texteCentre(ctx, `+${k}`, 0, 250, "grad"); ctx.restore();
+  zoomEn(ctx, W / 2, 640, s, () => texteCentre(ctx, `+${k}`, 730, 250, "grad"));
   ctx.globalAlpha = easeOut((t - 0.8) / 0.4);
   texteCentre(ctx, "offres ouvertes", 860, 72, "#fff");
   texteCentre(ctx, S.prep, 950, 72, "#fff");
@@ -288,35 +292,37 @@ function sceneFin(ctx, t, d, S) {
 // ---------------------------------------------------------------- programme
 const data = JSON.parse(readFileSync(join(DATA, "offres.json"), "utf8"));
 const offres = data.offres.slice(0, 3).map((o) => ({ ...o, organisation: orgNet(o.organisation), titreNet: titreNet(o.title, o.organisation) }));
-const ville = (offres.filter((o) => o.ville).map((o) => o.ville).sort((a, b) => offres.filter((o) => o.ville === b).length - offres.filter((o) => o.ville === a).length)[0]) || data.pays.nom;
+// Ville de l'accroche : celle de la majorité des offres, sinon le pays.
+const villes = offres.map((o) => o.ville).filter(Boolean);
+const ville = villes.find((v) => villes.filter((x) => x === v).length * 2 > offres.length) || data.pays.nom;
 const prep = PREP[data.pays.code] ?? `en ${data.pays.nom}`;
 const charger = async (f) => { try { return f && existsSync(join(DATA, f)) ? await loadImage(readFileSync(join(DATA, f))) : null; } catch { return null; } };
 const photos = await Promise.all(offres.map((o) => charger(o.photo?.fichier)));
 const logos = await Promise.all(offres.map((o) => charger(o.logo)));
-const iconeF = join(ROOT, "fonts", "..", "icone.png");
+const iconeF = join(ROOT, "icone.png");
 const icone = existsSync(process.env.ICONE || "") ? await loadImage(readFileSync(process.env.ICONE)) : existsSync(iconeF) ? await loadImage(readFileSync(iconeF)) : null;
 
 // Voix (dit) et sous-titres (écrit) de chaque scène.
 const SITE = "Oppor Afrique, point com";
-const ordinal = ["D'abord", "Ensuite", "Et enfin"];
+const ordinal = ["", "Ensuite, ", "Et enfin, "];
 const scenes = [
   { draw: sceneAccroche, S: { ville, photos, n: offres.length },
-    dit: `${ville} : regarde vite ces offres qui viennent de tomber.`,
-    ecrit: `${ville} : regarde vite ces offres qui viennent de tomber.` },
+    dit: `${ville === data.pays.nom ? prep.replace(/^au /, "Au ").replace(/^en /, "En ") : ville} : regarde vite ces offres qui viennent de tomber !`,
+    ecrit: `${ville === data.pays.nom ? prep.replace(/^au /, "Au ").replace(/^en /, "En ") : ville} : regarde vite ces offres qui viennent de tomber !` },
   ...offres.map((o, i) => {
     const j = jours(o);
     const fin = j && j >= 1 && j <= 10 ? (j === 1 ? " Attention, il ne reste qu'un jour !" : ` Il reste ${j} jours pour postuler.`) : " Postule vite.";
     const lieu = o.ville ? `, à ${o.ville}` : "";
     const qui = o.organisation ? `${o.organisation} recrute` : "Offre";
     return { draw: sceneOffre, S: { o, i, n: offres.length, img: photos[i], logo: logos[i], pays: data.pays },
-      dit: `${ordinal[i]}, ${o.organisation ? propre(o.organisation) + " recrute" : "une offre"} : ${propre(o.titreNet)}${lieu}.${fin}`,
+      dit: `${ordinal[i]}${o.organisation ? propre(o.organisation) + " recrute" : "une offre"} : ${propre(o.titreNet)}${lieu}.${fin}`,
       ecrit: `${qui} : ${o.titreNet}${lieu}.${fin}` };
   }),
   { draw: scenePlus, S: { total: data.total, prep },
-    dit: `Et ce n'est pas tout : ${data.total} offres t'attendent ${prep}, sur ${SITE}.`,
-    ecrit: `Et ce n'est pas tout : ${data.total} offres t'attendent ${prep}, sur opportafrik.com` },
+    dit: `Et ce n'est pas tout : ${data.total} offres t'attendent sur ${SITE}.`,
+    ecrit: `Et ce n'est pas tout : ${data.total} offres t'attendent sur opportafrik.com` },
   { draw: sceneFin, S: { icone },
-    dit: `Postule gratuitement. Et envoie cette vidéo à un ami qui cherche du travail.`,
+    dit: `C'est gratuit. Envoie cette vidéo à un ami qui cherche du travail.`,
     ecrit: `Postule gratuitement. Et envoie cette vidéo à un ami qui cherche du travail.` },
 ];
 

@@ -64,7 +64,7 @@ async function telecharger(url, fichier, min = 8000) {
 // des images générées. Limite gratuite : une image à la fois, pause entre deux.
 async function image(o, i) {
   const desc = decrire(o);
-  const prompt = `${desc}, West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark`;
+  const prompt = `${desc}, the person is an adult ${i % 2 ? "woman" : "man"} about 28 years old (not a child), West Africa, natural light, realistic professional photo, sharp, joyful, no text, no watermark`;
   const fichier = join(OUT, `photo-${i}.jpg`);
   console.log(`Image ${i} : ${desc}`);
   for (let essai = 0; essai < 4; essai++) {
