@@ -1,0 +1,31 @@
+{
+  "name": "robots-collecte",
+  "private": true,
+  "type": "module",
+  "description": "Robots qui collectent les opportunités publiées en Afrique (phase 1 : Mali).",
+  "scripts": {
+    "collecte": "tsx src/run.ts",
+    "essai": "tsx src/run.ts --essai",
+    "test": "tsx --test src/*.test.ts src/**/*.test.ts",
+    "verifier": "tsc --noEmit",
+    "indexnow": "tsx src/indexnow.ts",
+    "push": "tsx src/push.ts",
+    "liens": "tsx src/liens.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "cheerio": "1.2.0",
+    "fast-xml-parser": "5.11.2",
+    "robots-parser": "3.0.1",
+    "web-push": "3.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.0",
+    "@types/web-push": "3.6.4",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

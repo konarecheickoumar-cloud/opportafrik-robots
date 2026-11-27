@@ -1,0 +1,59 @@
+name: Robots de collecte
+
+# Dépôt public : les minutes GitHub Actions sont illimitées et gratuites.
+on:
+  schedule:
+    # Toutes les 2 heures, à la 17e minute (heure de Bamako = UTC).
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+    inputs:
+      essai:
+        description: "Mode essai : afficher les offres trouvées sans rien enregistrer"
+        type: boolean
+        default: false
+      source:
+        description: "Facultatif : seulement les sources dont le nom contient ce mot"
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: robots
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    # Seules les sources activées dans la base (is_active = true) sont visitées.
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: robots
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      BOT_CONTACT: ${{ secrets.BOT_CONTACT || 'contact@opportafrik.com' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: robots/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - name: Collecte
+        env:
+          MODE: ${{ (github.event_name == 'workflow_dispatch' && inputs.essai) && '--essai' || '--vrai' }}
+          SOURCE: ${{ inputs.source }}
+        run: npm run collecte -- "$MODE" "$SOURCE"
+      - name: Prévenir Bing des nouvelles offres (IndexNow)
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.essai) }}
+        run: npm run indexnow
+      - name: Notifications sur les téléphones abonnés
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.essai) }}
+        run: npm run push
+      - name: Retirer les offres dont la page d'origine a disparu (1 fois par jour)
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.essai) }}
+        run: npm run liens
