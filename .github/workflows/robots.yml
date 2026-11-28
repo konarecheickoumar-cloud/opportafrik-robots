@@ -4,7 +4,9 @@ name: Robots de collecte
 on:
   schedule:
     # Toutes les 2 heures, à la 17e minute (heure de Bamako = UTC).
-    - cron: '17 */2 * * *'
+    # Le réveil GitHub saute souvent des passages (dépôt neuf) : on le demande
+    # chaque heure à une minute peu chargée ; le vrai réveil fiable vient de Supabase.
+    - cron: '23 * * * *'
   workflow_dispatch:
     inputs:
       essai:

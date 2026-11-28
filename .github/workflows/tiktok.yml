@@ -9,7 +9,7 @@ name: Vidéo TikTok du jour
 on:
   schedule:
     # Chaque matin vers 9 h (heure de Bamako = UTC). Dépôt public : minutes illimitées.
-    - cron: '0 9 * * *'
+    - cron: '7 9 * * *'
   workflow_dispatch:
     inputs:
       essai:
